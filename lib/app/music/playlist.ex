@@ -4,6 +4,8 @@ defmodule MusicCollector.Music.Playlist do
 
   schema "playlists" do
     field :name, :string
+    field :spotify_url, :string
+    field :apple_music_url, :string
 
     timestamps(type: :utc_datetime)
   end
@@ -11,7 +13,7 @@ defmodule MusicCollector.Music.Playlist do
   @doc false
   def changeset(playlist, attrs) do
     playlist
-    |> cast(attrs, [:name])
+    |> cast(attrs, [:name, :spotify_url, :apple_music_url])
     |> validate_required([:name])
   end
 end
