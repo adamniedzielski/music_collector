@@ -21,6 +21,14 @@ defmodule MusicCollector.Music do
     Repo.all(Playlist |> order_by(asc: :name))
   end
 
+  def list_in_apple_music_only do
+    Repo.all from p in Playlist, where: is_nil(p.spotify_url)
+  end
+
+  def list_in_spotify_only do
+    Repo.all from p in Playlist, where: is_nil(p.apple_music_url)
+  end
+
   @doc """
   Gets a single playlist.
 

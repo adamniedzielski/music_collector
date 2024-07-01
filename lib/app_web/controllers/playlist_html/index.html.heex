@@ -7,6 +7,19 @@
   </:actions>
 </.header>
 
+
+<.link href={~p"/playlists"}>
+  All
+</.link>
+|
+<.link href={~p"/playlists?q=apple_music_only"}>
+  Only in Apple Music
+</.link>
+|
+<.link href={~p"/playlists?q=spotify_only"}>
+  Only in Spotify
+</.link>
+
 <.table id="playlists" rows={@playlists} row_click={&JS.navigate(~p"/playlists/#{&1}")}>
   <:col :let={playlist} label="Name"><%= playlist.name %></:col>
   <:action :let={playlist}>
