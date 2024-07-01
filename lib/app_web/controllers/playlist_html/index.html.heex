@@ -1,0 +1,23 @@
+<.header>
+  Listing Playlists
+  <:actions>
+    <.link href={~p"/playlists/new"}>
+      <.button>New Playlist</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="playlists" rows={@playlists} row_click={&JS.navigate(~p"/playlists/#{&1}")}>
+  <:col :let={playlist} label="Name"><%= playlist.name %></:col>
+  <:action :let={playlist}>
+    <div class="sr-only">
+      <.link navigate={~p"/playlists/#{playlist}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/playlists/#{playlist}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={playlist}>
+    <.link href={~p"/playlists/#{playlist}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

@@ -1,0 +1,8 @@
+<.header>
+  Edit Playlist <%= @playlist.id %>
+  <:subtitle>Use this form to manage playlist records in your database.</:subtitle>
+</.header>
+
+<.playlist_form changeset={@changeset} action={~p"/playlists/#{@playlist}"} />
+
+<.back navigate={~p"/playlists"}>Back to playlists</.back>

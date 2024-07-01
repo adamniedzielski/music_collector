@@ -17,7 +17,9 @@ defmodule MusicCollectorWeb.Router do
   scope "/", MusicCollectorWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    resources "/playlists", PlaylistController
+
+    get "/", PlaylistController, :index
   end
 
   # Other scopes may use custom stacks.
