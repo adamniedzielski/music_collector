@@ -18,7 +18,7 @@ defmodule MusicCollector.Music do
 
   """
   def list_playlists do
-    Repo.all(Playlist)
+    Repo.all(Playlist |> order_by(asc: :name))
   end
 
   @doc """
