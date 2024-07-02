@@ -1,5 +1,5 @@
 FROM elixir:1.17-alpine AS dev
-RUN apk add build-base git bash
+RUN apk add build-base git bash chromium chromium-chromedriver
 WORKDIR /app
 ENV MIX_HOME=/mix
 RUN mix local.hex --force
