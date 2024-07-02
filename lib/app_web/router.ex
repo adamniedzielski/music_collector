@@ -20,6 +20,8 @@ defmodule MusicCollectorWeb.Router do
     resources "/playlists", PlaylistController
     resources "/check_out_laters", CheckOutLaterController
 
+    get "/check_out_now", CheckOutNowController, :index
+
     get "/", PlaylistController, :index
   end
 

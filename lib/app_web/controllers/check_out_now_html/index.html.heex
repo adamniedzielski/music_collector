@@ -1,0 +1,12 @@
+<.header>
+  Check out now
+</.header>
+
+<.list>
+  <:item title="Name"><%= @check_out_later.name %></:item>
+  <:item title="Url">
+    <.link href={@check_out_later.url}>
+      <%= @check_out_later.url %>
+    </.link>
+  </:item>
+</.list>
