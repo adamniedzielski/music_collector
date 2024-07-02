@@ -1,0 +1,17 @@
+<.header>
+  Bought track <%= @bought_track.id %>
+  <:subtitle>This is a bought_track record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/bought_tracks/#{@bought_track}/edit"}>
+      <.button>Edit bought_track</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @bought_track.name %></:item>
+  <:item title="Artist"><%= @bought_track.artist %></:item>
+  <:item title="Platform"><%= @bought_track.platform %></:item>
+</.list>
+
+<.back navigate={~p"/bought_tracks"}>Back to bought_tracks</.back>

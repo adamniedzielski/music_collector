@@ -117,4 +117,62 @@ defmodule MusicCollector.MusicTest do
       assert %Ecto.Changeset{} = Music.change_check_out_later(check_out_later)
     end
   end
+
+  describe "bought_tracks" do
+    alias MusicCollector.Music.BoughtTrack
+
+    import MusicCollector.MusicFixtures
+
+    @invalid_attrs %{name: nil, artist: nil, platform: nil}
+
+    test "list_bought_tracks/0 returns all bought_tracks" do
+      bought_track = bought_track_fixture()
+      assert Music.list_bought_tracks() == [bought_track]
+    end
+
+    test "get_bought_track!/1 returns the bought_track with given id" do
+      bought_track = bought_track_fixture()
+      assert Music.get_bought_track!(bought_track.id) == bought_track
+    end
+
+    test "create_bought_track/1 with valid data creates a bought_track" do
+      valid_attrs = %{name: "some name", artist: "some artist", platform: "some platform"}
+
+      assert {:ok, %BoughtTrack{} = bought_track} = Music.create_bought_track(valid_attrs)
+      assert bought_track.name == "some name"
+      assert bought_track.artist == "some artist"
+      assert bought_track.platform == "some platform"
+    end
+
+    test "create_bought_track/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Music.create_bought_track(@invalid_attrs)
+    end
+
+    test "update_bought_track/2 with valid data updates the bought_track" do
+      bought_track = bought_track_fixture()
+      update_attrs = %{name: "some updated name", artist: "some updated artist", platform: "some updated platform"}
+
+      assert {:ok, %BoughtTrack{} = bought_track} = Music.update_bought_track(bought_track, update_attrs)
+      assert bought_track.name == "some updated name"
+      assert bought_track.artist == "some updated artist"
+      assert bought_track.platform == "some updated platform"
+    end
+
+    test "update_bought_track/2 with invalid data returns error changeset" do
+      bought_track = bought_track_fixture()
+      assert {:error, %Ecto.Changeset{}} = Music.update_bought_track(bought_track, @invalid_attrs)
+      assert bought_track == Music.get_bought_track!(bought_track.id)
+    end
+
+    test "delete_bought_track/1 deletes the bought_track" do
+      bought_track = bought_track_fixture()
+      assert {:ok, %BoughtTrack{}} = Music.delete_bought_track(bought_track)
+      assert_raise Ecto.NoResultsError, fn -> Music.get_bought_track!(bought_track.id) end
+    end
+
+    test "change_bought_track/1 returns a bought_track changeset" do
+      bought_track = bought_track_fixture()
+      assert %Ecto.Changeset{} = Music.change_bought_track(bought_track)
+    end
+  end
 end

@@ -205,4 +205,100 @@ defmodule MusicCollector.Music do
   def change_check_out_later(%CheckOutLater{} = check_out_later, attrs \\ %{}) do
     CheckOutLater.changeset(check_out_later, attrs)
   end
+
+  alias MusicCollector.Music.BoughtTrack
+
+  @doc """
+  Returns the list of bought_tracks.
+
+  ## Examples
+
+      iex> list_bought_tracks()
+      [%BoughtTrack{}, ...]
+
+  """
+  def list_bought_tracks do
+    Repo.all(BoughtTrack)
+  end
+
+  @doc """
+  Gets a single bought_track.
+
+  Raises `Ecto.NoResultsError` if the Bought track does not exist.
+
+  ## Examples
+
+      iex> get_bought_track!(123)
+      %BoughtTrack{}
+
+      iex> get_bought_track!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_bought_track!(id), do: Repo.get!(BoughtTrack, id)
+
+  @doc """
+  Creates a bought_track.
+
+  ## Examples
+
+      iex> create_bought_track(%{field: value})
+      {:ok, %BoughtTrack{}}
+
+      iex> create_bought_track(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_bought_track(attrs \\ %{}) do
+    %BoughtTrack{}
+    |> BoughtTrack.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a bought_track.
+
+  ## Examples
+
+      iex> update_bought_track(bought_track, %{field: new_value})
+      {:ok, %BoughtTrack{}}
+
+      iex> update_bought_track(bought_track, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_bought_track(%BoughtTrack{} = bought_track, attrs) do
+    bought_track
+    |> BoughtTrack.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a bought_track.
+
+  ## Examples
+
+      iex> delete_bought_track(bought_track)
+      {:ok, %BoughtTrack{}}
+
+      iex> delete_bought_track(bought_track)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_bought_track(%BoughtTrack{} = bought_track) do
+    Repo.delete(bought_track)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking bought_track changes.
+
+  ## Examples
+
+      iex> change_bought_track(bought_track)
+      %Ecto.Changeset{data: %BoughtTrack{}}
+
+  """
+  def change_bought_track(%BoughtTrack{} = bought_track, attrs \\ %{}) do
+    BoughtTrack.changeset(bought_track, attrs)
+  end
 end

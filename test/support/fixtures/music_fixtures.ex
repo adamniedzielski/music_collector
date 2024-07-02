@@ -32,4 +32,20 @@ defmodule MusicCollector.MusicFixtures do
 
     check_out_later
   end
+
+  @doc """
+  Generate a bought_track.
+  """
+  def bought_track_fixture(attrs \\ %{}) do
+    {:ok, bought_track} =
+      attrs
+      |> Enum.into(%{
+        artist: "some artist",
+        name: "some name",
+        platform: "some platform"
+      })
+      |> MusicCollector.Music.create_bought_track()
+
+    bought_track
+  end
 end

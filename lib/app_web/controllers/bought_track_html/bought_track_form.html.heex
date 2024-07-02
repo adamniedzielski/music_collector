@@ -1,0 +1,12 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:name]} type="text" label="Name" />
+  <.input field={f[:artist]} type="text" label="Artist" />
+  <.input field={f[:platform]} type="select" label="Platform" options={["Bandcamp", "Beatport"]}>
+  </.input>
+  <:actions>
+    <.button>Save Bought track</.button>
+  </:actions>
+</.simple_form>

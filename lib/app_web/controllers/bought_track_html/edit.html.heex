@@ -1,0 +1,8 @@
+<.header>
+  Edit Bought track <%= @bought_track.id %>
+  <:subtitle>Use this form to manage bought_track records in your database.</:subtitle>
+</.header>
+
+<.bought_track_form changeset={@changeset} action={~p"/bought_tracks/#{@bought_track}"} />
+
+<.back navigate={~p"/bought_tracks"}>Back to bought_tracks</.back>

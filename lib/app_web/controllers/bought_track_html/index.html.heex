@@ -1,0 +1,25 @@
+<.header>
+  Listing Bought tracks
+  <:actions>
+    <.link href={~p"/bought_tracks/new"}>
+      <.button>New Bought track</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="bought_tracks" rows={@bought_tracks} row_click={&JS.navigate(~p"/bought_tracks/#{&1}")}>
+  <:col :let={bought_track} label="Name"><%= bought_track.name %></:col>
+  <:col :let={bought_track} label="Artist"><%= bought_track.artist %></:col>
+  <:col :let={bought_track} label="Platform"><%= bought_track.platform %></:col>
+  <:action :let={bought_track}>
+    <div class="sr-only">
+      <.link navigate={~p"/bought_tracks/#{bought_track}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/bought_tracks/#{bought_track}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={bought_track}>
+    <.link href={~p"/bought_tracks/#{bought_track}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>
