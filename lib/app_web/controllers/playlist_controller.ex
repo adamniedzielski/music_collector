@@ -5,11 +5,13 @@ defmodule MusicCollectorWeb.PlaylistController do
   alias MusicCollector.Music.Playlist
 
   def index(conn, params) do
-    playlists = case params["q"] do
-      "apple_music_only" -> Music.list_in_apple_music_only
-      "spotify_only" -> Music.list_in_spotify_only
-      _ -> Music.list_playlists()
-    end
+    playlists =
+      case params["q"] do
+        "apple_music_only" -> Music.list_in_apple_music_only()
+        "spotify_only" -> Music.list_in_spotify_only()
+        _ -> Music.list_playlists()
+      end
+
     render(conn, :index, playlists: playlists)
   end
 

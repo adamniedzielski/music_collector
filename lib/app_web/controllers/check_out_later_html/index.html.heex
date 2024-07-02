@@ -10,7 +10,11 @@
   </:actions>
 </.header>
 
-<.table id="check_out_laters" rows={@check_out_laters} row_click={&JS.navigate(~p"/check_out_laters/#{&1}")}>
+<.table
+  id="check_out_laters"
+  rows={@check_out_laters}
+  row_click={&JS.navigate(~p"/check_out_laters/#{&1}")}
+>
   <:col :let={check_out_later} label="Name"><%= check_out_later.name %></:col>
   <:action :let={check_out_later}>
     <div class="sr-only">
@@ -19,7 +23,11 @@
     <.link navigate={~p"/check_out_laters/#{check_out_later}/edit"}>Edit</.link>
   </:action>
   <:action :let={check_out_later}>
-    <.link href={~p"/check_out_laters/#{check_out_later}"} method="delete" data-confirm="Are you sure?">
+    <.link
+      href={~p"/check_out_laters/#{check_out_later}"}
+      method="delete"
+      data-confirm="Are you sure?"
+    >
       Delete
     </.link>
   </:action>

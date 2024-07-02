@@ -4,7 +4,7 @@ defmodule MusicCollectorWeb.CheckOutNowController do
   alias MusicCollector.Music
 
   def index(conn, _params) do
-    check_out_later = Music.list_check_out_laters() |> Enum.random
+    check_out_later = Music.list_check_out_laters() |> Enum.random()
     render(conn, :index, check_out_later: check_out_later)
   end
 end

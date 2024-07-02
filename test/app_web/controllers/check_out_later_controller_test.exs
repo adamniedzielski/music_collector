@@ -41,7 +41,10 @@ defmodule MusicCollectorWeb.CheckOutLaterControllerTest do
   describe "edit check_out_later" do
     setup [:create_check_out_later]
 
-    test "renders form for editing chosen check_out_later", %{conn: conn, check_out_later: check_out_later} do
+    test "renders form for editing chosen check_out_later", %{
+      conn: conn,
+      check_out_later: check_out_later
+    } do
       conn = get(conn, ~p"/check_out_laters/#{check_out_later}/edit")
       assert html_response(conn, 200) =~ "Edit check out later"
     end

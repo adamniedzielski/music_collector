@@ -90,14 +90,19 @@ defmodule MusicCollector.MusicTest do
       check_out_later = check_out_later_fixture()
       update_attrs = %{name: "some updated name", url: "some updated url"}
 
-      assert {:ok, %CheckOutLater{} = check_out_later} = Music.update_check_out_later(check_out_later, update_attrs)
+      assert {:ok, %CheckOutLater{} = check_out_later} =
+               Music.update_check_out_later(check_out_later, update_attrs)
+
       assert check_out_later.name == "some updated name"
       assert check_out_later.url == "some updated url"
     end
 
     test "update_check_out_later/2 with invalid data returns error changeset" do
       check_out_later = check_out_later_fixture()
-      assert {:error, %Ecto.Changeset{}} = Music.update_check_out_later(check_out_later, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               Music.update_check_out_later(check_out_later, @invalid_attrs)
+
       assert check_out_later == Music.get_check_out_later!(check_out_later.id)
     end
 
