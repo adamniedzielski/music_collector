@@ -1,4 +1,4 @@
-.PHONY: build install bash server
+.PHONY: build install bash server test
 
 build:
 	docker-compose build
@@ -11,3 +11,6 @@ bash:
 
 server:
 	docker-compose run --rm --service-ports web
+
+test:
+	docker-compose run --rm web mix test
