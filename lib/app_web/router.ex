@@ -18,6 +18,7 @@ defmodule MusicCollectorWeb.Router do
     pipe_through :browser
 
     resources "/playlists", PlaylistController
+    resources "/check_out_laters", CheckOutLaterController
 
     get "/", PlaylistController, :index
   end

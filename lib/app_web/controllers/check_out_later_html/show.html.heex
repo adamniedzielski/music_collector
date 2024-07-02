@@ -1,0 +1,20 @@
+<.header>
+  Check out later <%= @check_out_later.id %>
+  <:subtitle>This is a check out later record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/check_out_laters/#{@check_out_later}/edit"}>
+      <.button>Edit check out later</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @check_out_later.name %></:item>
+  <:item title="Url">
+    <.link href={@check_out_later.url}>
+      <%= @check_out_later.url %>
+    </.link>
+  </:item>
+</.list>
+
+<.back navigate={~p"/check_out_laters"}>Back to check out laters</.back>

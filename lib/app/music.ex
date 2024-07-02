@@ -109,4 +109,100 @@ defmodule MusicCollector.Music do
   def change_playlist(%Playlist{} = playlist, attrs \\ %{}) do
     Playlist.changeset(playlist, attrs)
   end
+
+  alias MusicCollector.Music.CheckOutLater
+
+  @doc """
+  Returns the list of check_out_laters.
+
+  ## Examples
+
+      iex> list_check_out_laters()
+      [%CheckOutLater{}, ...]
+
+  """
+  def list_check_out_laters do
+    Repo.all(CheckOutLater)
+  end
+
+  @doc """
+  Gets a single check_out_later.
+
+  Raises `Ecto.NoResultsError` if the Check out later does not exist.
+
+  ## Examples
+
+      iex> get_check_out_later!(123)
+      %CheckOutLater{}
+
+      iex> get_check_out_later!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_check_out_later!(id), do: Repo.get!(CheckOutLater, id)
+
+  @doc """
+  Creates a check_out_later.
+
+  ## Examples
+
+      iex> create_check_out_later(%{field: value})
+      {:ok, %CheckOutLater{}}
+
+      iex> create_check_out_later(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_check_out_later(attrs \\ %{}) do
+    %CheckOutLater{}
+    |> CheckOutLater.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a check_out_later.
+
+  ## Examples
+
+      iex> update_check_out_later(check_out_later, %{field: new_value})
+      {:ok, %CheckOutLater{}}
+
+      iex> update_check_out_later(check_out_later, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_check_out_later(%CheckOutLater{} = check_out_later, attrs) do
+    check_out_later
+    |> CheckOutLater.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a check_out_later.
+
+  ## Examples
+
+      iex> delete_check_out_later(check_out_later)
+      {:ok, %CheckOutLater{}}
+
+      iex> delete_check_out_later(check_out_later)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_check_out_later(%CheckOutLater{} = check_out_later) do
+    Repo.delete(check_out_later)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking check_out_later changes.
+
+  ## Examples
+
+      iex> change_check_out_later(check_out_later)
+      %Ecto.Changeset{data: %CheckOutLater{}}
+
+  """
+  def change_check_out_later(%CheckOutLater{} = check_out_later, attrs \\ %{}) do
+    CheckOutLater.changeset(check_out_later, attrs)
+  end
 end
