@@ -17,7 +17,7 @@ defmodule MusicCollectorWeb.CheckOutLaterControllerTest do
   describe "new check_out_later" do
     test "renders form", %{conn: conn} do
       conn = get(conn, ~p"/check_out_laters/new")
-      assert html_response(conn, 200) =~ "New Check out later"
+      assert html_response(conn, 200) =~ "Check out later"
     end
   end
 
@@ -34,7 +34,7 @@ defmodule MusicCollectorWeb.CheckOutLaterControllerTest do
 
     test "renders errors when data is invalid", %{conn: conn} do
       conn = post(conn, ~p"/check_out_laters", check_out_later: @invalid_attrs)
-      assert html_response(conn, 200) =~ "New Check out later"
+      assert html_response(conn, 200) =~ "Check out later"
     end
   end
 
@@ -43,7 +43,7 @@ defmodule MusicCollectorWeb.CheckOutLaterControllerTest do
 
     test "renders form for editing chosen check_out_later", %{conn: conn, check_out_later: check_out_later} do
       conn = get(conn, ~p"/check_out_laters/#{check_out_later}/edit")
-      assert html_response(conn, 200) =~ "Edit Check out later"
+      assert html_response(conn, 200) =~ "Edit check out later"
     end
   end
 
@@ -60,7 +60,7 @@ defmodule MusicCollectorWeb.CheckOutLaterControllerTest do
 
     test "renders errors when data is invalid", %{conn: conn, check_out_later: check_out_later} do
       conn = put(conn, ~p"/check_out_laters/#{check_out_later}", check_out_later: @invalid_attrs)
-      assert html_response(conn, 200) =~ "Edit Check out later"
+      assert html_response(conn, 200) =~ "Edit check out later"
     end
   end
 
