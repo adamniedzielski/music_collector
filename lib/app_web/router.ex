@@ -19,6 +19,7 @@ defmodule MusicCollectorWeb.Router do
 
     resources "/playlists", PlaylistController do
       post "/playlist_bought_tracks", PlaylistBoughtTrackController, :create
+      delete "/playlist_bought_tracks/:id", PlaylistBoughtTrackController, :delete
     end
 
     resources "/check_out_laters", CheckOutLaterController

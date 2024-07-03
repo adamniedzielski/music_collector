@@ -43,7 +43,8 @@ defmodule MusicCollector.Music do
       ** (Ecto.NoResultsError)
 
   """
-  def get_playlist!(id), do: Repo.get!(Playlist, id) |> Repo.preload(:bought_tracks)
+  def get_playlist!(id),
+    do: Repo.get!(Playlist, id) |> Repo.preload(playlist_bought_tracks: :bought_track)
 
   @doc """
   Creates a playlist.

@@ -24,8 +24,19 @@
 
 <h2 class="mt-14">Bought tracks</h2>
 
-<.table id="bought-tracks" rows={@playlist.bought_tracks}>
-  <:col :let={bought_track} label="Name"><%= bought_track.name %></:col>
+<.table id="bought-tracks" rows={@playlist.playlist_bought_tracks}>
+  <:col :let={playlist_bought_track} label="Name">
+    <%= playlist_bought_track.bought_track.name %>
+  </:col>
+  <:action :let={playlist_bought_track}>
+    <.link
+      href={~p"/playlists/#{@playlist.id}/playlist_bought_tracks/#{playlist_bought_track}"}
+      method="delete"
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
 </.table>
 
 <.simple_form

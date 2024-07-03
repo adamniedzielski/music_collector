@@ -19,4 +19,13 @@ defmodule MusicCollectorWeb.PlaylistBoughtTrackController do
     |> put_flash(:info, "Playlist updated successfully.")
     |> redirect(to: ~p"/playlists/#{playlist}")
   end
+
+  def delete(conn, %{"id" => id, "playlist_id" => playlist_id}) do
+    playlist_bought_track = Repo.get!(PlaylistBoughtTrack, id)
+    Repo.delete(playlist_bought_track)
+
+    conn
+    |> put_flash(:info, "Track deleted successfully.")
+    |> redirect(to: ~p"/playlists/#{playlist_id}")
+  end
 end
