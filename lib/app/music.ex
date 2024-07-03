@@ -43,7 +43,7 @@ defmodule MusicCollector.Music do
       ** (Ecto.NoResultsError)
 
   """
-  def get_playlist!(id), do: Repo.get!(Playlist, id)
+  def get_playlist!(id), do: Repo.get!(Playlist, id) |> Repo.preload(:bought_tracks)
 
   @doc """
   Creates a playlist.
@@ -108,6 +108,12 @@ defmodule MusicCollector.Music do
   """
   def change_playlist(%Playlist{} = playlist, attrs \\ %{}) do
     Playlist.changeset(playlist, attrs)
+  end
+
+  alias MusicCollector.Music.PlaylistBoughtTrack
+
+  def change_playlist_bought_track(%PlaylistBoughtTrack{} = playlist_bought_track, attrs \\ %{}) do
+    PlaylistBoughtTrack.changeset(playlist_bought_track, attrs)
   end
 
   alias MusicCollector.Music.CheckOutLater

@@ -6,6 +6,7 @@ defmodule MusicCollector.Music.BoughtTrack do
     field :name, :string
     field :artist, :string
     field :platform, :string
+    many_to_many :playlists, MusicCollector.Music.Playlist, join_through: MusicCollector.Music.PlaylistBoughtTrack
 
     timestamps(type: :utc_datetime)
   end

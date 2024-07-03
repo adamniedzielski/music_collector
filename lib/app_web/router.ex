@@ -17,7 +17,9 @@ defmodule MusicCollectorWeb.Router do
   scope "/", MusicCollectorWeb do
     pipe_through :browser
 
-    resources "/playlists", PlaylistController
+    resources "/playlists", PlaylistController do
+      post "/playlist_bought_tracks", PlaylistBoughtTrackController, :create
+    end
     resources "/check_out_laters", CheckOutLaterController
     resources "/bought_tracks", BoughtTrackController
 

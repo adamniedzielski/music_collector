@@ -22,4 +22,21 @@
   </:item>
 </.list>
 
+<h2 class="mt-14">Bought tracks</h2>
+
+<.table id="bought-tracks" rows={@playlist.bought_tracks}>
+  <:col :let={bought_track} label="Name"><%= bought_track.name %></:col>
+</.table>
+
+<.simple_form :let={f} for={@changeset} action={"/playlists/#{@playlist.id}/playlist_bought_tracks"}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:bought_track_id]} type="select" label="Track" options={Enum.map(@bought_tracks, fn x -> [value: x.id, key: x.name] end)}>
+  </.input>
+  <:actions>
+    <.button>Add</.button>
+  </:actions>
+</.simple_form>
+
 <.back navigate={~p"/playlists"}>Back to playlists</.back>
