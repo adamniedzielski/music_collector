@@ -150,9 +150,16 @@ defmodule MusicCollector.MusicTest do
 
     test "update_bought_track/2 with valid data updates the bought_track" do
       bought_track = bought_track_fixture()
-      update_attrs = %{name: "some updated name", artist: "some updated artist", platform: "some updated platform"}
 
-      assert {:ok, %BoughtTrack{} = bought_track} = Music.update_bought_track(bought_track, update_attrs)
+      update_attrs = %{
+        name: "some updated name",
+        artist: "some updated artist",
+        platform: "some updated platform"
+      }
+
+      assert {:ok, %BoughtTrack{} = bought_track} =
+               Music.update_bought_track(bought_track, update_attrs)
+
       assert bought_track.name == "some updated name"
       assert bought_track.artist == "some updated artist"
       assert bought_track.platform == "some updated platform"

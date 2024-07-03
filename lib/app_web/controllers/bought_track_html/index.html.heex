@@ -7,7 +7,11 @@
   </:actions>
 </.header>
 
-<.table id="bought_tracks" rows={@bought_tracks} row_click={&JS.navigate(~p"/bought_tracks/#{&1}")}>
+<.table
+  id="bought_tracks"
+  rows={@bought_tracks}
+  row_click={&JS.navigate(~p"/bought_tracks/#{&1}")}
+>
   <:col :let={bought_track} label="Name"><%= bought_track.name %></:col>
   <:col :let={bought_track} label="Artist"><%= bought_track.artist %></:col>
   <:col :let={bought_track} label="Platform"><%= bought_track.platform %></:col>

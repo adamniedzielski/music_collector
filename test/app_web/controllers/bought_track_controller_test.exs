@@ -4,7 +4,11 @@ defmodule MusicCollectorWeb.BoughtTrackControllerTest do
   import MusicCollector.MusicFixtures
 
   @create_attrs %{name: "some name", artist: "some artist", platform: "some platform"}
-  @update_attrs %{name: "some updated name", artist: "some updated artist", platform: "some updated platform"}
+  @update_attrs %{
+    name: "some updated name",
+    artist: "some updated artist",
+    platform: "some updated platform"
+  }
   @invalid_attrs %{name: nil, artist: nil, platform: nil}
 
   describe "index" do

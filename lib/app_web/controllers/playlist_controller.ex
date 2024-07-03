@@ -34,7 +34,7 @@ defmodule MusicCollectorWeb.PlaylistController do
 
   def show(conn, %{"id" => id}) do
     playlist = Music.get_playlist!(id)
-    bought_tracks = Music.list_bought_tracks
+    bought_tracks = Music.list_bought_tracks()
     changeset = Music.change_playlist_bought_track(%MusicCollector.Music.PlaylistBoughtTrack{})
     render(conn, :show, playlist: playlist, bought_tracks: bought_tracks, changeset: changeset)
   end

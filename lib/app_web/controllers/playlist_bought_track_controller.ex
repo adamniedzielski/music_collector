@@ -5,7 +5,10 @@ defmodule MusicCollectorWeb.PlaylistBoughtTrackController do
   alias MusicCollector.Music.PlaylistBoughtTrack
   alias MusicCollector.Repo
 
-  def create(conn, %{"playlist_id" => playlist_id, "playlist_bought_track" => playlist_bought_track_params}) do
+  def create(conn, %{
+        "playlist_id" => playlist_id,
+        "playlist_bought_track" => playlist_bought_track_params
+      }) do
     playlist = Music.get_playlist!(playlist_id)
 
     %PlaylistBoughtTrack{playlist_id: playlist.id}
