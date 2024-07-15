@@ -30,10 +30,17 @@ defmodule MusicCollectorWeb.Router do
     get "/", PlaylistController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", MusicCollectorWeb do
-  #   pipe_through :api
-  # end
+  scope "/.well-known", MusicCollectorWeb do
+    pipe_through :api
+
+    get "webfinger", WebfingerController, :index
+  end
+
+  scope "/api", MusicCollectorWeb do
+    pipe_through :api
+
+    get "users/adam", UsersController, :index
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:app, :dev_routes) do
